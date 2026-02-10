@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Pancakes</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" 
+        rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- ================= HEADER / NAVIGACIJA ================= -->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="header-content">
+
+                <!-- Logo / naziv -->
+                <div class="logo">
+                    <h1>Pancakes</h1>
+                </div>
+
+                <!-- Navigacioni meni -->
+                <nav class="navbar">
+                    <div class="nav-menu" id="navMenu">
+                        <div class="nav-item">
+                            <a href="index.html" class="nav-link">Home</a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="about.html" class="nav-link">About Us</a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="menu.html" class="nav-link">Menu</a>
+                        </div>
+                        <!-- active označava trenutnu stranicu -->
+                        <div class="nav-item">
+                            <a href="contact.html" class="nav-link active">Contact</a>
+                        </div>
+                    </div>
+
+                    <!--  (mobilni meni) -->
+                    <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= HERO SEKCIJA ================= -->
+    <!-- Uvodni dio Contact stranice -->
+    <div class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h2>Contact Us</h2>
+                <p>We are happy to answer all your questions</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= CONTACT SECTION ================= -->
+    <div class="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+
+                <!-- ===== KONTAKT INFORMACIJE ===== -->
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+
+                    <!-- Jedna info stavka -->
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div class="info-content">
+                            <h4>Address</h4>
+                            <p>Gazija 18<br>77245 Bužim, Bosnia & Herzegovina</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">📞</div>
+                        <div class="info-content">
+                            <h4>Phone</h4>
+                            <p>+387 11 123 4567</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">✉️</div>
+                        <div class="info-content">
+                            <h4>Email</h4>
+                            <p>info@pancakes.ba</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">🕒</div>
+                        <div class="info-content">
+                            <h4>Opening Hours</h4>
+                            <p>
+                                Monday - Friday: 08:00 - 20:00<br>
+                                Saturday: 09:00 - 22:00
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== KONTAKT FORMA ===== -->
+                <div class="contact-form-wrapper">
+                    <h3>Send Us a Message</h3>
+
+                    <!-- Forma za slanje poruke -->
+                    <form id="contactForm" class="contact-form">
+                        
+                        <!-- Ime -->
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <!-- required = obavezno polje -->
+                            <input type="text" id="name" name="name" required>
+                            <!-- Poruka greške (JavaScript) -->
+                            <span class="error-message" id="nameError"></span>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <!-- type="email" provjerava format emaila -->
+                            <input type="email" id="email" name="email" required>
+                            <span class="error-message" id="emailError"></span>
+                        </div>
+
+                        <!-- Poruka -->
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                            <span class="error-message" id="messageError"></span>
+                        </div>
+
+                        <!-- Dugme za slanje -->
+                        <button type="submit" class="btn btn-primary">
+                            Send Message
+                        </button>
+
+                        <!-- Poruka uspjeha (skrivena dok se forma ne pošalje) -->
+                        <div class="form-success" id="formSuccess" style="display: none;">
+                            <p>Thank you! Your message has been successfully sent.</p>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= MAPA ================= -->
+    <!-- Placeholder za mapu (Google Maps ili slika) -->
+    <div class="map-section">
+        <div class="map-placeholder">
+            <p>📍 Location: Gazija 18, Bužim</p>
+        </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-content">
+
+                <div class="footer-section">
+                    <h4>Pancakes</h4>
+                    <p>Your favorite pancake dessert shop</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="menu.html">Menu</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@pancakes.ba</p>
+                    <p>Phone: +387 11 123 4567</p>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 Pancakes. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Vlastiti JavaScript (validacija forme, mobilni meni) -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,890 @@
+/*-:root je **globalni selektor** koji predstavlja **najviši element u dokumentu** (obično `<html>`).
+- Kada se varijable definišu ovdje, one su **dostupne svugdje** u CSS-u.
+Umjesto da svuda pišemo boju:
+color: #2C2C2C;
+možemo koristiti varijablu:
+color: var(--text-dark)
+
+
+
+/* Pastelno roza varijable */
+
+:root {
+    
+    --beige-light: #FFEDEE;   
+    --beige-medium: #FFD7D9;  
+    --beige-dark: #FFBFC4;    
+    
+    --brown-light: #D9A8B2;   
+    --brown-medium: #C17F8F;  
+    --brown-dark: #A35A6C;    
+    
+    --white: #FFFFFF;        
+    --text-dark: #2C2C2C;    
+    --text-light: #8B6F72;    
+}
+
+/* ============================================
+   GLOBAL STYLES
+   ============================================ */
+* {
+    margin: 0;               /* Uklanja default marginu */
+    padding: 0;              /* Uklanja default padding */
+    box-sizing: border-box;  /* Omogućava preciznije računanje širine elemenata */
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Postavlja osnovni font */
+    color: var(--text-dark);            /* Postavlja boju teksta */
+    background-color: var(--beige-light); /* Postavlja pozadinu */
+    line-height: 1.6;                   /* Povećava razmak između redova */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif; /* Font za naslove */
+    font-weight: 600;                       /* Deblji font za naslove */
+    color: var(--brown-dark);               /* Tamnija boja naslova */
+}
+
+a {
+    text-decoration: none;   /* Uklanja podvlačenje linkova */
+    color: inherit;          /* Link nasljeđuje boju roditelja */
+    transition: all 0.3s ease; /* Animacija pri hover efektu */
+}
+
+img {
+    max-width: 100%;  /* Slika se prilagođava širini elementa */
+    height: auto;     /* Održava proporcije slike */
+}
+
+.container {
+    max-width: 1200px;      /* Maksimalna širina sadržaja */
+    margin: 0 auto;         /* Centriranje */
+    padding: 0 20px;        /* Razmak sa strane */
+}
+
+/* ============================================
+   HEADER / NAVIGATION
+   ============================================ */
+.header-wrapper {
+    background-color: var(--white);  /* Pozadina headera */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Blagi sjenka */
+    position: sticky;                /* Sticky header pri skrolovanju */
+    top: 0;                          /* Pozicioniranje na vrhu */
+    z-index: 1000;                   /* Prikazuje header iznad ostalih elemenata */
+}
+
+.header-content {
+    display: flex;                   /* Fleks layout */
+    justify-content: space-between;  /* Razmak između logo i menija */
+    align-items: center;             /* Vertikalno poravnanje */
+    padding: 20px 0;                 /* Razmak gore/dole */
+}
+
+.logo img  {
+    display:block;                   /* Slika se prikazuje kao blok */
+    margin-top:6px;                  /* Razmak od vrha */
+    height:83px;                     /* Visina loga */
+}
+
+.navbar {
+    display: flex;                   /* Fleks layout */
+    align-items: center;             /* Centriranje po visini */
+}
+
+.nav-menu {
+    display: flex;                   /* Horizontalni meni */
+    gap: 30px;                       /* Razmak između linkova */
+    list-style: none;                /* Uklanja bullet */
+}
+
+.nav-item {
+    position: relative;              /* Potrebno za pseudo elemente */
+}
+
+.nav-link {
+    color: var(--text-dark);         /* Boja linka */
+    font-weight: 500;                /* Srednje podebljan font */
+    padding: 8px 0;                  /* Vertikalni razmak */
+    position: relative;              /* Potrebno za pseudo elemente */
+    display: block;                  /* Link zauzima cijelu širinu */
+}
+
+.nav-link:hover {
+    color: var(--brown-medium);      /* Boja pri hoveru */
+    transform: translateY(-2px);     /* Lagano pomjeranje gore */
+}
+
+.nav-link.active {
+    color: var(--brown-dark);        /* Boja aktivnog linka */
+    font-weight: 600;                /* Deblji font aktivnog linka */
+}
+
+.nav-link.active::after {
+    content: '';                     /* Pseudo element */
+    position: absolute;              /* Pozicionira se unutar linka */
+    bottom: 0;                       /* Pri dnu linka */
+    left: 0;                         /* Počinje od lijeve strane */
+    width: 100%;                     /* Širina kao link */
+    height: 2px;                     /* Visina linije */
+    background-color: var(--brown-medium); /* Boja linije */
+}
+
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;                   /* Sakriva se na desktopu */
+    flex-direction: column;          /* Hamburger linije jedna ispod druge */
+    cursor: pointer;                 /* Pokazivač ruke */
+    gap: 5px;                        /* Razmak između linija */
+}
+
+.mobile-menu-toggle span {
+    width: 25px;                     /* Širina linije */
+    height: 3px;                     /* Visina linije */
+    background-color: var(--brown-dark); /* Boja linije */
+    transition: all 0.3s ease;       /* Animacija pri aktivaciji */
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px); /* Rotacija prve linije */
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;                      /* Druga linija nestaje */
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px); /* Rotacija treće linije */
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.hero-section {
+    background-image: url(banner.png); /* Pozadinska slika */
+    background-size: cover;           /* Slika se rasteže da pokrije sekciju */
+    background-position: center;      /* Centrirana slika */
+    height: 600px;                    /* Visina hero sekcije */
+    position: relative;               /* Potrebno za overlay */
+}
+
+.hero-overlay {
+    background: linear-gradient(rgba(107, 99, 98, 0.9), rgba(92, 88, 85, 0.4)); /* Gradient */
+    height: 100%;                     /* Prekriva cijelu sekciju */
+    display: flex;                    /* Fleks layout */
+    align-items: center;              /* Centriranje vertikalno */
+    justify-content: center;          /* Centriranje horizontalno */
+}
+.hero-content {
+    text-align: center;               /* Centrirani tekst */
+    color: var(--white);              /* Bijeli tekst */
+}
+
+.hero-title {
+    font-size: 3.5rem;                 /* Veliki naslov */
+    margin-bottom: 20px;               /* Razmak ispod */
+    color: var(--white);               /* Bijeli naslov */
+    animation: fadeInUp 1s ease;       /* Animacija pojavljivanja */
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;                 /* Veličina podnaslova */
+    margin-bottom: 30px;               /* Razmak ispod */
+    color: var(--beige-light);         /* Svijetli tekst */
+    animation: fadeInUp 1s ease 0.2s both; /* Animacija sa odgodom */
+}
+
+.hero-buttons {
+    display: flex;                     /* Dugmad u redu */
+    gap: 20px;                         /* Razmak između dugmadi */
+    justify-content: center;           /* Centriranje */
+    animation: fadeInUp 1s ease 0.4s both; /* Animacija sa većom odgodom */
+}
+
+/* ============================================
+   PAGE HERO (for other pages)
+   ============================================ */
+.page-hero {
+    background: linear-gradient(135deg, var(--brown-medium) 0%, var(--brown-dark) 100%); /* Gradient pozadina */
+    padding: 80px 0;                 /* Vertikalni razmak */
+    text-align: center;              /* Centrirani tekst */
+}
+
+.page-hero-content h2 {
+    font-size: 3rem;                 /* Veličina naslova */
+    color: var(--white);             /* Bijeli tekst */
+    margin-bottom: 15px;             /* Razmak ispod */
+}
+
+.page-hero-content p {
+    font-size: 1.2rem;               /* Veličina paragrafa */
+    color: var(--beige-light);       /* Svijetli tekst */
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+    display: inline-block;           /* Dugme se ponaša kao inline blok */
+    padding: 12px 30px;              /* Razmak unutar dugmeta */
+    border-radius: 5px;              /* Zaobljeni uglovi */
+    font-weight: 500;                /* Srednje podebljan tekst */
+    text-align: center;              /* Centriran tekst */
+    cursor: pointer;                 /* Pokazivač ruke */
+    border: none;                    /* Bez ivice */
+    transition: all 0.3s ease;       /* Animacija pri hoveru */
+    font-size: 1rem;                 /* Veličina fonta */
+}
+
+.btn-primary {
+    background-color: var(--brown-medium); /* Pozadina primarnog dugmeta */
+    color: var(--white);                   /* Bijeli tekst */
+}
+
+.btn-primary:hover {
+    background-color: var(--brown-dark);   /* Tamnija boja pri hoveru */
+    transform: translateY(-2px);           /* Pomjeranje gore */
+    box-shadow: 0 5px 15px rgba(107, 78, 61, 0.4); /* Sjenka */
+}
+
+.btn-secondary {
+    background-color: transparent;         /* Transparentno dugme */
+    color: var(--white);                   /* Bijeli tekst */
+    border: 2px solid var(--white);        /* Bijela ivica */
+}
+
+.btn-secondary:hover {
+    background-color: var(--white);        /* Bijela pozadina */
+    color: var(--brown-dark);              /* Tamni tekst */
+    transform: translateY(-2px);           /* Pomjeranje gore */
+}
+
+/* ============================================
+   FEATURES SECTION
+   ============================================ */
+.features-section {
+    padding: 80px 0;               /* Vertikalni razmak */
+    background-color: var(--white); /* Pozadina sekcije */
+}
+
+.section-title {
+    text-align: center;            /* Centrirani naslov sekcije */
+    margin-bottom: 60px;           /* Razmak ispod */
+}
+
+.section-title h2 {
+    font-size: 2.5rem;             /* Veličina naslova */
+    margin-bottom: 15px;           /* Razmak ispod */
+}
+
+.features-grid {
+    display: grid;                 /* Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Automatsko prilagođavanje */
+    gap: 40px;                     /* Razmak između kartica */
+}
+
+.feature-card {
+    text-align: center;            /* Centrirani tekst */
+    padding: 40px 20px;            /* Razmak unutar kartice */
+    background-color: var(--beige-light); /* Pozadina kartice */
+    border-radius: 10px;           /* Zaobljeni uglovi */
+    transition: all 0.3s ease;     /* Animacija pri hoveru */
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);  /* Pomjeranje gore */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sjenka */
+}
+
+.feature-icon {
+    font-size: 4rem;               /* Veličina ikone */
+    margin-bottom: 20px;           /* Razmak ispod */
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;             /* Veličina naslova */
+    margin-bottom: 15px;           /* Razmak ispod */
+    color: var(--brown-dark);      /* Boja naslova */
+}
+
+.feature-card p {
+    color: var(--text-light);      /* Boja teksta */
+    line-height: 1.8;              /* Razmak između redova */
+}
+
+/* ============================================
+   POPULAR SECTION
+   ============================================ */
+.popular-section {
+    padding: 80px 0;               /* Vertikalni razmak */
+    background-color: var(--beige-light); /* Pozadina sekcije */
+}
+
+.popular-grid {
+    display: grid;                 /* Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Automatsko prilagođavanje */
+    gap: 30px;                     /* Razmak između kartica */
+}
+
+.popular-card {
+    background-color: var(--white); /* Pozadina kartice */
+    border-radius: 10px;            /* Zaobljeni uglovi */
+    overflow: hidden;               /* Sakriva višak sadržaja */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sjenka */
+    transition: all 0.3s ease;      /* Animacija pri hoveru */
+}
+
+.popular-card:hover {
+    transform: translateY(-5px);    /* Pomjeranje gore */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Jača sjenka */
+}
+
+.popular-image {
+    width: 100%;                    /* Širina slike */
+    height: 250px;                  /* Visina slike */
+    background-size: cover;         /* Slika pokriva cijelu površinu */
+    background-position: center;    /* Centrirana slika */
+}
+
+.popular-content {
+    padding: 25px;                  /* Razmak unutar sadržaja */
+}
+
+.popular-content h3 {
+    font-size: 1.5rem;              /* Veličina naslova */
+    margin-bottom: 10px;            /* Razmak ispod */
+    color: var(--brown-dark);       /* Boja naslova */
+}
+
+.popular-price {
+    font-size: 1.3rem;              /* Veličina cijene */
+    font-weight: 600;               /* Deblji font */
+    color: var(--brown-medium);     /* Boja cijene */
+}
+
+/* ============================================
+   ABOUT PAGE
+   ============================================ */
+.about-section {
+    padding: 80px 0;                /* Vertikalni razmak */
+    background-color: var(--white); /* Pozadina sekcije */
+}
+
+.about-content-wrapper {
+    display: grid;                  /* Grid layout */
+    grid-template-columns: 1fr 1fr; /* Dvije kolone */
+    gap: 60px;                      /* Razmak između kolona */
+    align-items: center;            /* Poravnanje po sredini */
+}
+
+.about-image {
+    width: 100%;                    /* Širina slike */
+    height: 500px;                  /* Visina slike */
+    background-size: cover;         /* Slika pokriva površinu */
+    background-position: center;    /* Centrirana slika */
+    border-radius: 10px;            /* Zaobljeni uglovi */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sjenka */
+}
+
+.about-text-section h3 {
+    font-size: 2rem;                /* Veličina naslova */
+    margin-bottom: 25px;            /* Razmak ispod */
+    color: var(--brown-dark);       /* Boja naslova */
+}
+
+.about-text-section p {
+    margin-bottom: 20px;            /* Razmak ispod */
+    color: var(--text-light);       /* Boja teksta */
+    line-height: 1.8;               /* Razmak između redova */
+    font-size: 1.1rem;              /* Veličina fonta */
+}
+
+.values-section {
+    padding: 80px 0;                /* Vertikalni razmak */
+    background-color: var(--beige-light); /* Pozadina sekcije */
+}
+
+.values-grid {
+    display: grid;                  /* Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Automatsko prilagođavanje */
+    gap: 30px;                      /* Razmak između kartica */
+}
+
+.value-card {
+    background-color: var(--white); /* Pozadina kartice */
+    padding: 30px;                  /* Razmak unutar kartice */
+    border-radius: 10px;            /* Zaobljeni uglovi */
+    text-align: center;             /* Centrirani tekst */
+    transition: all 0.3s ease;      /* Animacija pri hoveru */
+}
+
+.value-card:hover {
+    transform: translateY(-5px);    /* Pomjeranje gore */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sjenka */
+}
+
+.value-card h4 {
+    font-size: 1.3rem;              /* Veličina naslova */
+    margin-bottom: 15px;            /* Razmak ispod */
+    color: var(--brown-dark);       /* Boja naslova */
+}
+
+.value-card p {
+    color: var(--text-light);       /* Boja teksta */
+}
+
+/* ============================================
+   TEAM SECTION
+   ============================================ */
+.team-section {
+    padding: 80px 0;                /* Vertikalni razmak */
+    background-color: var(--white); /* Pozadina sekcije */
+}
+
+.team-grid {
+    display: grid;                  /* Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Automatsko prilagođavanje */
+    gap: 40px;                      /* Razmak između kartica */
+}
+
+.team-card {
+    text-align: center;             /* Centrirani tekst */
+    background-color: var(--beige-light); /* Pozadina kartice */
+    padding: 30px;                  /* Razmak unutar kartice */
+    border-radius: 10px;            /* Zaobljeni uglovi */
+    transition: all 0.3s ease;      /* Animacija pri hoveru */
+}
+
+.team-card:hover {
+    transform: translateY(-5px);    /* Pomjeranje gore */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sjenka */
+}
+
+.team-image {
+    width: 200px;                   /* Širina slike */
+    height: 200px;                  /* Visina slike */
+    border-radius: 50%;             /* Zaobljeni krug */
+    background-size: cover;         /* Slika pokriva površinu */
+    background-position: center;    /* Centrirana slika */
+    margin: 0 auto 20px;            /* Centriranje i razmak ispod */
+    border: 5px solid var(--white); /* Bijela ivica */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sjenka */
+}
+
+.team-card h4 {
+    font-size: 1.3rem;              /* Veličina naslova */
+    margin-bottom: 10px;            /* Razmak ispod */
+    color: var(--brown-dark);       /* Boja naslova */
+}
+
+.team-card p {
+    color: var(--brown-medium);     /* Boja teksta */
+    font-style: italic;             /* Italic tekst */
+}
+
+/* ============================================
+   MENU PAGE
+   ============================================ */
+.menu-filter-section {
+    padding: 40px 0;                /* Vertikalni razmak */
+    background-color: var(--white); /* Pozadina sekcije */
+    border-bottom: 2px solid var(--beige-medium); /* Donja linija */
+}
+
+.menu-filters {
+    display: flex;                  /* Fleks layout */
+    justify-content: center;        /* Centriranje filtera */
+    gap: 20px;                      /* Razmak između dugmadi */
+    flex-wrap: wrap;                /* Prelomi na novu liniju ako je potrebno */
+}
+
+.filter-btn {
+    padding: 10px 25px;             /* Razmak unutar dugmeta */
+    background-color: var(--beige-light); /* Pozadina dugmeta */
+    border: 2px solid var(--beige-medium); /* Ivica dugmeta */
+    border-radius: 25px;            /* Zaobljeni rubovi */
+    color: var(--brown-dark);       /* Boja teksta */
+    font-weight: 500;               /* Srednje podebljan tekst */
+    cursor: pointer;                /* Pokazivač ruke */
+    transition: all 0.3s ease;      /* Animacija pri hoveru */
+}
+
+.filter-btn:hover {
+    background-color: var(--beige-medium); /* Promjena pozadine */
+    transform: translateY(-2px);           /* Pomjeranje gore */
+}
+
+.filter-btn.active {
+    background-color: var(--brown-medium); /* Aktivna boja */
+    color: var(--white);                   /* Bijeli tekst */
+    border-color: var(--brown-medium);     /* Ivica iste boje */
+}
+
+.menu-section {
+    padding: 60px 0;                /* Vertikalni razmak */
+    background-color: var(--beige-light); /* Pozadina sekcije */
+}
+
+.menu-category {
+    margin-bottom: 80px;            /* Razmak ispod kategorije */
+}
+
+.category-title {
+    text-align: center;             /* Centrirani naslov */
+    margin-bottom: 50px;            /* Razmak ispod */
+}
+
+.category-title h3 {
+    font-size: 2.5rem;              /* Veličina naslova */
+    color: var(--brown-dark);       /* Boja naslova */
+    position: relative;             /* Potrebno za pseudo element */
+    display: inline-block;          /* Naslov u jednom redu */
+    padding-bottom: 15px;           /* Razmak ispod */
+}
+
+.category-title h3::after {
+    content: '';                    /* Pseudo element */
+    position: absolute;             /* Pozicionira se ispod naslova */
+    bottom: 0;                      /* Pri dnu */
+    left: 50%;                      /* Centrirano */
+    transform: translateX(-50%);    /* Precizno centriranje */
+    width: 80px;                    /* Dužina linije */
+    height: 3px;                    /* Visina linije */
+    background-color: var(--brown-medium); /* Boja linije */
+}
+
+.menu-grid {
+    display: grid;                  /* Grid layout */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Automatsko punjenje */
+    gap: 30px;                      /* Razmak između kartica */
+}
+
+.menu-card {
+    background-color: var(--white); /* Pozadina kartice */
+    border-radius: 10px;            /* Zaobljeni uglovi */
+    overflow: hidden;               /* Sakriva višak sadržaja */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sjenka */
+    transition: all 0.3s ease;      /* Animacija pri hoveru */
+}
+
+.menu-card:hover {
+    transform: translateY(-8px);    /* Pomjeranje gore */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); /* Jača sjenka */
+}
+
+.menu-image {
+    width: 100%;                    /* Širina slike */
+    height: 250px;                  /* Visina slike */
+    background-size: cover;         /* Slika pokriva površinu */
+    background-position: center;    /* Centrirana slika */
+}
+
+.menu-content {
+    padding: 25px;                  /* Razmak unutar sadržaja */
+}
+
+.menu-content h4 {
+    font-size: 1.4rem;              /* Veličina naslova */
+    margin-bottom: 10px;            /* Razmak ispod */
+    color: var(--brown-dark);       /* Boja naslova */
+}
+
+.menu-content p {
+    color: var(--text-light);       /* Boja teksta */
+    margin-bottom: 15px;            /* Razmak ispod */
+    line-height: 1.6;               /* Razmak između redova */
+}
+
+.menu-price {
+    font-size: 1.5rem;              /* Veličina cijene */
+    font-weight: 600;               /* Deblji font */
+    color: var(--brown-medium);     /* Boja cijene */
+}
+
+/* Hide menu categories by default when filtered */
+.menu-card.hidden {
+    display: none;                  /* Sakriva karticu */
+}
+/* ============================================
+   CONTACT PAGE
+   ============================================ */
+.contact-section {
+    padding: 80px 0;                /* Vertikalni razmak sekcije */
+    background-color: var(--white); /* Pozadina sekcije */
+}
+
+.contact-wrapper {
+    display: grid;                  /* Grid layout */
+    grid-template-columns: 1fr 1fr; /* Dvije kolone: info + forma */
+    gap: 60px;                      /* Razmak između kolona */
+}
+
+.contact-info h3 {
+    font-size: 2rem;                /* Veličina naslova */
+    margin-bottom: 40px;            /* Razmak ispod naslova */
+    color: var(--brown-dark);       /* Boja naslova */
+}
+
+.info-item {
+    display: flex;                  /* Fleks layout za ikonu + tekst */
+    gap: 20px;                      /* Razmak između ikone i teksta */
+    margin-bottom: 30px;            /* Razmak između stavki */
+    align-items: flex-start;        /* Poravnanje vrha teksta */
+}
+
+.info-icon {
+    font-size: 2rem;                /* Veličina ikone */
+    width: 50px;                    /* Širina ikone */
+    text-align: center;             /* Centriranje ikone */
+}
+
+.info-content h4 {
+    font-size: 1.2rem;              /* Veličina naslova u info sekciji */
+    margin-bottom: 8px;             /* Razmak ispod */
+    color: var(--brown-dark);       /* Boja naslova */
+}
+
+.info-content p {
+    color: var(--text-light);       /* Boja teksta */
+    line-height: 1.8;               /* Razmak između redova */
+}
+
+.contact-form-wrapper h3 {
+    font-size: 2rem;                /* Veličina naslova forme */
+    margin-bottom: 30px;            /* Razmak ispod naslova */
+    color: var(--brown-dark);       /* Boja naslova */
+}
+
+.contact-form {
+    background-color: var(--beige-light); /* Pozadina forme */
+    padding: 40px;                        /* Razmak unutar forme */
+    border-radius: 10px;                  /* Zaobljeni uglovi */
+}
+
+.form-group {
+    margin-bottom: 25px;                  /* Razmak između polja */
+}
+
+.form-group label {
+    display: block;                       /* Label se prikazuje kao blok */
+    margin-bottom: 8px;                   /* Razmak ispod labela */
+    font-weight: 500;                     /* Srednje podebljan font */
+    color: var(--brown-dark);             /* Boja labela */
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;                          /* Polje zauzima punu širinu */
+    padding: 12px 15px;                   /* Razmak unutar polja */
+    border: 2px solid var(--beige-medium);/* Ivica polja */
+    border-radius: 5px;                   /* Zaobljeni uglovi */
+    font-family: 'Poppins', sans-serif;   /* Font unutar polja */
+    font-size: 1rem;                      /* Veličina fonta */
+    transition: all 0.3s ease;            /* Animacija pri fokusiranju */
+    background-color: var(--white);       /* Pozadina polja */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;                        /* Uklanja default outline */
+    border-color: var(--brown-medium);    /* Promjena boje ivice pri fokusiranju */
+    box-shadow: 0 0 0 3px rgba(107, 78, 61, 0.1); /* Sjenka oko polja */
+}
+
+.error-message {
+    display: block;                       /* Prikazuje se kao blok */
+    color: #d32f2f;                       /* Crvena boja za greške */
+    font-size: 0.875rem;                  /* Manji font */
+    margin-top: 5px;                      /* Razmak iznad greške */
+    min-height: 20px;                     /* Minimalna visina poruke */
+}
+
+.form-success {
+    margin-top: 20px;                     /* Razmak iznad poruke */
+    padding: 15px;                        /* Razmak unutar poruke */
+    background-color: #4caf50;            /* Zelena boja za uspjeh */
+    color: var(--white);                  /* Bijeli tekst */
+    border-radius: 5px;                   /* Zaobljeni uglovi */
+    text-align: center;                   /* Centrirani tekst */
+}
+
+.map-section {
+    padding: 0;                           /* Bez razmaka */
+    background-color: var(--beige-medium);/* Pozadina mape */
+}
+
+.map-placeholder {
+    height: 400px;                        /* Visina placeholdera */
+    display: flex;                        /* Fleks layout */
+    align-items: center;                  /* Vertikalno centriranje */
+    justify-content: center;              /* Horizontalno centriranje */
+    background-color: var(--beige-dark);  /* Tamnija pozadina */
+    color: var(--brown-dark);             /* Boja teksta */
+    font-size: 1.2rem;                    /* Veličina teksta */
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+    background-color: var(--brown-dark);  /* Pozadina footera */
+    color: var(--beige-light);            /* Boja teksta */
+    padding: 60px 0 20px;                 /* Razmak u footeru */
+}
+
+.footer-content {
+    display: grid;                        /* Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Automatsko prilagođavanje */
+    gap: 40px;                            /* Razmak između sekcija */
+    margin-bottom: 40px;                  /* Razmak iznad donjeg dijela */
+}
+
+.footer-section h4 {
+    font-size: 1.3rem;                    /* Veličina naslova */
+    margin-bottom: 20px;                  /* Razmak ispod naslova */
+    color: var(--white);                  /* Bijeli naslov */
+}
+
+.footer-section p {
+    color: var(--beige-medium);           /* Svijetli tekst */
+    line-height: 1.8;                     /* Razmak između redova */
+}
+
+.footer-links {
+    display: flex;                        /* Fleks layout */
+    flex-direction: column;               /* Linkovi jedan ispod drugog */
+    gap: 10px;                            /* Razmak između linkova */
+}
+
+.footer-links a {
+    color: var(--beige-medium);           /* Boja linkova */
+    transition: all 0.3s ease;            /* Animacija pri hoveru */
+}
+
+.footer-links a:hover {
+    color: var(--white);                  /* Boja linka pri hoveru */
+    transform: translateX(5px);           /* Pomjeranje desno */
+}
+
+.footer-bottom {
+    text-align: center;                   /* Centrirani tekst */
+    padding-top: 30px;                    /* Razmak iznad */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Tanka linija */
+}
+
+.footer-bottom p {
+    color: var(--beige-medium);           /* Boja teksta */
+    margin: 0;                            /* Bez margine */
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;                       /* Početno stanje: nevidljivo */
+        transform: translateY(30px);      /* Pomjeranje dolje */
+    }
+    to {
+        opacity: 1;                       /* Kraj: vidljivo */
+        transform: translateY(0);         /* Bez pomjeranja */
+    }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+    /* Navigation */
+    .mobile-menu-toggle {
+        display: flex;                   /* Prikazuje meni na mobilnom */
+    }
+
+    .nav-menu {
+        position: fixed;                  /* Fiksiran meni */
+        top: 70px;                        /* Pozicija ispod headera */
+        left: -100%;                      /* Sakriven izvan ekrana */
+        width: 100%;                      /* Širina 100% */
+        background-color: var(--white);   /* Bijela pozadina */
+        flex-direction: column;           /* Meni vertikalno */
+        padding: 20px;                    /* Razmak unutar menija */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sjenka */
+        transition: left 0.3s ease;       /* Animacija pri otvaranju */
+        z-index: 999;                     /* Iznad ostalih elemenata */
+    }
+
+    .nav-menu.active {
+        left: 0;                          /* Prikazuje meni */
+    }
+
+    .nav-item {
+        width: 100%;                      /* Link zauzima punu širinu */
+        border-bottom: 1px solid var(--beige-medium); /* Linija između linkova */
+    }
+
+    .nav-link {
+        padding: 15px 0;                  /* Veći razmak */
+        display: block;                   /* Link kao blok */
+    }
+
+    /* Hero */
+    .hero-title {
+        font-size: 2.5rem;                /* Manji naslov na mobilnom */
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;                /* Manji podnaslov */
+    }
+
+    .hero-buttons {
+        flex-direction: column;           /* Dugmad jedan ispod drugog */
+        align-items: center;              /* Centriranje */
+    }
+
+    /* About */
+    .about-content-wrapper {
+        grid-template-columns: 1fr;       /* Jedna kolona umjesto dvije */
+    }
+
+    .about-image {
+        height: 300px;                    /* Manja visina slike */
+    }
+
+    /* Contact */
+    .contact-wrapper {
+        grid-template-columns: 1fr;       /* Jedna kolona */
+    }
+
+    /* Menu */
+    .menu-grid {
+        grid-template-columns: 1fr;       /* Jedna kolona */
+    }
+
+    /* Features */
+    .features-grid {
+        grid-template-columns: 1fr;       /* Jedna kolona */
+    }
+
+    /* Popular */
+    .popular-grid {
+        grid-template-columns: 1fr;       /* Jedna kolona */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;                  /* Još manji naslov */
+    }
+
+    .page-hero-content h2 {
+        font-size: 2rem;                  /* Manji naslov */
+    }
+
+    .section-title h2 {
+        font-size: 2rem;                  /* Manji naslov sekcije */
+    }
+
+    .contact-form {
+        padding: 25px;                    /* Manji padding */
+    }
+}

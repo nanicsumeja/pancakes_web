@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Pancakes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts – učitavanje odabranih fontova -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" 
+        rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- ================= HEADER / NAVIGACIJA ================= -->
+    <div class="header-wrapper">
+        <div class="container">
+            <div class="header-content">
+
+                <!-- Logo / naziv sajta -->
+                <div class="logo">
+                    <h1>Pancakes</h1>
+                </div>
+
+                <!-- Navigacioni meni -->
+                <nav class="navbar">
+                    <div class="nav-menu" id="navMenu">
+                        <!-- Linkovi navigacije -->
+                        <div class="nav-item">
+                            <a href="index.html" class="nav-link">Home</a>
+                        </div>
+                        <div class="nav-item">
+                            <!-- active klasa označava trenutnu stranicu -->
+                            <a href="about.html" class="nav-link active">About Us</a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="menu.html" class="nav-link">Menu</a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="contact.html" class="nav-link">Contact</a>
+                        </div>
+                    </div>
+
+                    <!-- dugme -->
+                    <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= HERO SEKCIJA ================= -->
+    <!-- Uvodni banner za About stranicu -->
+    <div class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h2>About Us</h2>
+                <p>Our story of love for pancakes</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= ABOUT CONTENT ================= -->
+    <!-- Glavni sadržaj stranice -->
+    <div class="about-section">
+        <div class="container">
+            <div class="about-content-wrapper">
+
+                <!-- Lijeva strana – slika -->
+                <div class="about-image-section">
+                    <!-- Slika postavljena kao background -->
+                    <div class="about-image" style="background-image: url('our_story.jpg');"></div>
+                </div>
+
+                <!-- Desna strana – tekst -->
+                <div class="about-text-section">
+                    <h3>Our Story</h3>
+                    <p>
+                        Our dessert shop was founded in 2015 with one simple idea – 
+                        to offer every guest the most delicious and freshest pancakes.
+                    </p>
+                    <p>
+                        Over the years, we have developed more than 20 different recipes, 
+                        combining classic flavors with modern innovations.
+                    </p>
+                    <p>
+                        Our mission is to provide every guest with an unforgettable experience.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= VALUES SEKCIJA ================= -->
+    <!-- Vrijednosti kompanije -->
+    <div class="values-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Values</h2>
+            </div>
+
+            <!-- Grid sa vrijednostima -->
+            <div class="values-grid">
+                <div class="value-card">
+                    <h4>Quality</h4>
+                    <p>We use only the best ingredients</p>
+                </div>
+                <div class="value-card">
+                    <h4>Freshness</h4>
+                    <p>Everything is prepared daily</p>
+                </div>
+                <div class="value-card">
+                    <h4>Love</h4>
+                    <p>Every pancake is made with passion</p>
+                </div>
+                <div class="value-card">
+                    <h4>Tradition</h4>
+                    <p>Classic recipes with a modern twist</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= TEAM SEKCIJA ================= -->
+    <!-- Predstavljanje tima -->
+    <div class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Team</h2>
+            </div>
+
+            <div class="team-grid">
+                <!-- Jedan član tima -->
+                <div class="team-card">
+                    <div class="team-image" style="background-image: url('chef1.jpg');"></div>
+                    <h4>Ali Mehić</h4>
+                    <p>Head Chef</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image" style="background-image: url('chef2.jpg');"></div>
+                    <h4>Nur Nurić</h4>
+                    <p>Owner</p>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image" style="background-image: url('chef3.jpg');"></div>
+                    <h4>Kan Nanić</h4>
+                    <p>Pastry Chef</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-content">
+
+                <!-- Opis firme -->
+                <div class="footer-section">
+                    <h4>Pancakes</h4>
+                    <p>Your favorite pancake dessert shop</p>
+                </div>
+
+                <!-- Navigacija u footeru -->
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="menu.html">Menu</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Kontakt podaci -->
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@pancakes.ba</p>
+                    <p>Phone: +387 11 123 4567</p>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 Pancakes. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript – interaktivne komponente -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Vlastiti JavaScript (npr. mobilni meni) -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Naslov stranice koji se vidi u tabu browsera -->
+    <title>Pancakes - Home</title>
+    
+    <!-- Bootstrap CSS – framework za grid sistem, dugmad, responzivnost -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts – učitavanje custom fontova -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" 
+        rel="stylesheet">
+    
+    <!-- Vlastiti CSS fajl za stilove stranice -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- ================= HEADER / NAVIGACIJA ================= -->
+    <div class="header-wrapper">
+        <div class="container">
+            <!-- Sadržaj headera -->
+            <div class="header-content">
+
+                <!-- Logo sekcija -->
+                <div class="logo">
+                    <img src="logotip.png" alt="logo">
+                </div>
+
+                <!-- Navigacioni meni -->
+                <nav class="navbar">
+                    <!-- Meni linkovi -->
+                    <div class="nav-menu" id="navMenu">
+                        <div class="nav-item">
+                            <a href="index.html" class="nav-link active">Home</a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="about.html" class="nav-link">About</a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="menu.html" class="nav-link">Menu</a>
+                        </div>
+                        <div class="nav-item">
+                            <a href="contact.html" class="nav-link">Contact Us</a>
+                        </div>
+                    </div>
+
+                    <!-- dugme -->
+                    <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= HERO SEKCIJA ================= -->
+    <!-- Glavni banner sa naslovom i dugmadima -->
+    <div class="hero-section">
+        <!-- Tamni overlay preko pozadinske slike -->
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="hero-content">
+                    <h2 class="hero-title">Welcome to Our Dessert Shop</h2>
+                    <p class="hero-subtitle">The most delicious pancakes in town</p>
+
+                    <!-- Dugmad u hero sekciji -->
+                    <div class="hero-buttons">
+                        <a href="menu.html" class="btn btn-primary">View Menu</a>
+                        <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FEATURES SEKCIJA ================= -->
+    <!-- Sekcija koja objašnjava prednosti -->
+    <div class="features-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us?</h2>
+            </div>
+
+            <!-- Grid sa karticama -->
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🥞</div>
+                    <h3>Freshly Made</h3>
+                    <p>Every pancake is prepared on the spot using the highest quality ingredients</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🍯</div>
+                    <h3>Wide Selection</h3>
+                    <p>Over 20 different pancake varieties – sweet, savory, and special</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Top Quality</h3>
+                    <p>We use only premium ingredients without preservatives or additives</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= POPULAR PRODUCTS ================= -->
+    <!-- Najpopularniji proizvodi -->
+    <div class="popular-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Most Popular</h2>
+            </div>
+
+            <div class="popular-grid">
+                <!-- Jedna kartica proizvoda -->
+                <div class="popular-card">
+                    <!-- Slika proizvoda kao background -->
+                    <div class="popular-image" style="background-image: url('nutt.png');"></div>
+                    <div class="popular-content">
+                        <h3>Classic with Nutella</h3>
+                        <p class="popular-price">10KM</p>
+                    </div>
+                </div>
+
+                <div class="popular-card">
+                    <div class="popular-image" style="background-image: url('pink2.png');"></div>
+                    <div class="popular-content">
+                        <h3>Pancake with Strawberries</h3>
+                        <p class="popular-price">15KM</p>
+                    </div>
+                </div>
+
+                <div class="popular-card">
+                    <div class="popular-image" style="background-image: url('salty.jpg');"></div>
+                    <div class="popular-content">
+                        <h3>Classic salty</h3>
+                        <p class="popular-price">17KM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <div class="footer">
+        <div class="container">
+            <div class="footer-content">
+
+                <!-- Footer info -->
+                <div class="footer-section">
+                    <h4>Pancakes</h4>
+                    <p>Your favorite pancake dessert shop</p>
+                </div>
+
+                <!-- Brzi linkovi -->
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html">Home</a>
+                        <a href="about.html">About Us</a>
+                        <a href="menu.html">Menu</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Kontakt informacije -->
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@pancakes.ba</p>
+                    <p>Phone: +387 11 123 4567</p>
+                </div>
+            </div>
+
+            <!-- Donji dio footera -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 Pancakes. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript – omogućava dropdown, modal, collapse itd. -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Vlastiti JavaScript fajl -->
+    <script src="script.js"></script>
+</body>
+</html>
